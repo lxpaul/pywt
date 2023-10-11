@@ -26,6 +26,8 @@ void CAT(TYPE, _mexh)(const TYPE * const restrict input, TYPE * const restrict o
 
 void CAT(TYPE, _morl)(const TYPE * const restrict input, TYPE * const restrict output, const size_t N);
 
+vois CAT(TYPE, _pois)(const TYPE * const restrict input, TYPE * const restrict output, const size_t N);
+
 void CAT(TYPE, _cgau)(const TYPE * const restrict input,
                               TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
                               const size_t number);

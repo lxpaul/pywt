@@ -174,6 +174,7 @@ cdef extern from "c/cwt.h":
 
     cdef void double_morl(const double * const input, double * const output, const size_t N) nogil
 
+    cdef void double_pois(const double * const input, double * const output, const size_t N) nogil
 
     cdef void double_cgau(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   const size_t number) nogil
@@ -192,6 +193,9 @@ cdef extern from "c/cwt.h":
     cdef void float_mexh(const float * const input, float * const output, const size_t N) nogil
 
     cdef void float_morl(const float * const input, float * const output, const size_t N) nogil
+    
+    cdef void float_pois(const float * const input, float * const output, const size_t N) nogil
+
 
     cdef void float_cgau(const float * const input, float * const output_r, float * const output_i, const size_t N,
                                   const size_t number) nogil

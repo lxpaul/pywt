@@ -123,6 +123,14 @@ void CAT(TYPE, _morl)(const TYPE * const restrict input, TYPE * const restrict o
     }
 }
 
+void CAT(TYPE, _pois)(const TYPE * const restrict input, TYPE * const restrict output, const size_t N)
+{
+    size_t i = 0;
+    for (i = 0; i < N; i++)
+    {
+        output[i] = (1-CAT(TYPE, _pow)(input[i],2.0))/(CAT(TYPE, _pow)(1-CAT(TYPE, _pow)(input[i],2.0),2.0)*CAT(TYPE, _pi)())
+    }
+}
 
 void CAT(TYPE, _cgau)(const TYPE * const restrict input,
                               TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
