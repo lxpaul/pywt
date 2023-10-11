@@ -34,6 +34,8 @@ int is_discrete_wavelet(WAVELET_NAME name)
             return 0;
         case MORL:
             return 0;
+        case POIS:
+            return 0;
         case CGAU:
             return 0;
         case SHAN:
@@ -416,6 +418,25 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
             break;
+        case POIS:
+            w = blank_continuous_wavelet();
+            if(w == NULL) return NULL;
+
+            w->base.support_width = -1;
+            w->base.orthogonal = 0;
+            w->base.biorthogonal = 0;
+            w->base.symmetry = SYMMETRIC;
+            w->base.compact_support = 0;
+            w->base.family_name = "Poisson kernel wavelet";
+            w->base.short_name = "pois";
+            w->complex_cwt = 0;
+            w->lower_bound = -8;
+            w->upper_bound = 8;
+            w->center_frequency = 0;
+            w->bandwidth_frequency = 0;
+            w->fbsp_order = 0;
+            break;
+
         case CGAU:
             if (order > 8)
                 return NULL;

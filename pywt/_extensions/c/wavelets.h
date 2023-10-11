@@ -29,6 +29,7 @@ typedef enum {
     GAUS,
     MEXH,
     MORL,
+    POIS,
     CGAU,
     SHAN,
     FBSP,
