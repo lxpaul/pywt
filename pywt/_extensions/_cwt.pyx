@@ -98,7 +98,7 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
         elif wavelet.short_family_name == "pois":
             psi = np.zeros(output_len, np.float32)
             with nogil:
-                c_wt.double_pois(&data[0], <double *>psi.data, data_size)
+                c_wt.float_pois(&data[0], <float *>psi.data, data_size)
             return psi
         elif wavelet.short_family_name == "cgau":
             psi_r = np.zeros(output_len, np.float32)
