@@ -33,6 +33,11 @@ void CAT(TYPE, _cgau)(const TYPE * const restrict input,
                               const size_t number);
 
 
+void CAT(TYPE, _cpoi)(const TYPE * const restrict input,
+                              TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
+                              const TYPE number);
+
+
 void CAT(TYPE, _shan)(const TYPE * const restrict input, TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
                               const TYPE  FB, const TYPE  FC);
 
