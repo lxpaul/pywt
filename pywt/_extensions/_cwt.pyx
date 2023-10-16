@@ -17,6 +17,7 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
     cdef double bandwidth_frequency
     cdef double center_frequency
     cdef int fbsp_order
+    cdef double cpoi_number
     if output_len < 1:
         raise RuntimeError("Invalid output length.")
 
