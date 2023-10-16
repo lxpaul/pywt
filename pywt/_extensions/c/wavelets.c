@@ -38,6 +38,8 @@ int is_discrete_wavelet(WAVELET_NAME name)
             return 0;
         case CGAU:
             return 0;
+        case CPOI:
+            return 0;
         case SHAN:
             return 0;
         case FBSP:
@@ -354,7 +356,7 @@ DiscreteWavelet* discrete_wavelet(WAVELET_NAME name, unsigned int order)
     return w;
 }
 
-ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
+ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order, unsigned float order)
 {
     ContinuousWavelet *w;
     switch(name){
@@ -452,6 +454,26 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
                 w->base.symmetry = ANTI_SYMMETRIC;
             w->base.compact_support = 0;
             w->base.family_name = "Complex Gaussian wavelets";
+            w->base.short_name = "cgau";
+            w->complex_cwt = 1;
+            w->lower_bound = -5;
+            w->upper_bound = 5;
+            w->center_frequency = 0;
+            w->bandwidth_frequency = 0;
+            w->fbsp_order = 0;
+            break;
+        case CPOI:
+            if (number < 0)
+                return NULL;
+            w = blank_continuous_wavelet();
+            if(w == NULL) return NULL;
+
+            w->base.support_width = -1;
+            w->base.orthogonal = 0;
+            w->base.biorthogonal = 0;
+            w->base.symmetry = SYMMETRIC;
+            w->base.compact_support = 0;
+            w->base.family_name = "Complex Poisson wavelets";
             w->base.short_name = "cgau";
             w->complex_cwt = 1;
             w->lower_bound = -5;
