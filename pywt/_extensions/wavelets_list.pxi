@@ -19,6 +19,7 @@ cdef extern from "c/wavelets.h":
         MORL
         POIS
         CGAU
+        CPOI
         SHAN
         FBSP
         CMOR
@@ -168,6 +169,8 @@ __wname_to_code = {
     "cgau7": (CGAU, 7),
     "cgau8": (CGAU, 8),
 
+    "cpoi": (CPOI, 0),
+
     "shan": (SHAN, 0),
 
     "fbsp": (FBSP, 0),
@@ -180,10 +183,10 @@ __wname_to_code = {
 cdef __wfamily_list_short, __wfamily_list_long
 __wfamily_list_short = [
     "haar", "db", "sym", "coif", "bior", "rbio", "dmey", "gaus", "mexh",
-    "morl", "pois", "cgau", "shan", "fbsp", "cmor"]
+    "morl", "pois", "cgau","cpoi", "shan", "fbsp", "cmor"]
 __wfamily_list_long = [
     "Haar", "Daubechies", "Symlets", "Coiflets", "Biorthogonal",
     "Reverse biorthogonal", "Discrete Meyer (FIR Approximation)", "Gaussian",
     "Mexican hat wavelet", "Poisson kernel wavelet", "Morlet wavelet", "Complex Gaussian wavelets",
-    "Shannon wavelets", "Frequency B-Spline wavelets",
+    "Complex Poisson wavelets", "Shannon wavelets", "Frequency B-Spline wavelets",
     "Complex Morlet wavelets"]
