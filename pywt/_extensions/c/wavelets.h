@@ -31,6 +31,7 @@ typedef enum {
     MORL,
     POIS,
     CGAU,
+    CPOI,
     SHAN,
     FBSP,
     CMOR
