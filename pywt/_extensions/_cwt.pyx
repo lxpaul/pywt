@@ -55,9 +55,9 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
         elif wavelet.short_family_name == "cpoi":
             psi_r = np.zeros(output_len, np.float64)
             psi_i = np.zeros(output_len, np.float64)
-            cpoi_order = wavelet.cpoi_order
+            cpoi_number = wavelet.cpoi_number
             with nogil:
-                c_wt.double_cpoi(&data[0], <double *>psi_r.data, <double *>psi_i.data, data_size, cpoi_order)
+                c_wt.double_cpoi(&data[0], <double *>psi_r.data, <double *>psi_i.data, data_size, cpoi_number)
             return (psi_r, psi_i)
         elif wavelet.short_family_name == "shan":
             psi_r = np.zeros(output_len, np.float64)
@@ -117,9 +117,9 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
         elif wavelet.short_family_name == "cpoi":
             psi_r = np.zeros(output_len, np.float32)
             psi_i = np.zeros(output_len, np.float32)
-            cpoi_order = wavelet.cpoi_order
+            cpoi_number = wavelet.cpoi_number
             with nogil:
-                c_wt.float_cpoi(&data[0], <float *>psi_r.data, <float *>psi_i.data, data_size, cpoi_order)
+                c_wt.float_cpoi(&data[0], <float *>psi_r.data, <float *>psi_i.data, data_size, cpoi_number)
             return (psi_r, psi_i)
         elif wavelet.short_family_name == "shan":
             psi_r = np.zeros(output_len, np.float32)
