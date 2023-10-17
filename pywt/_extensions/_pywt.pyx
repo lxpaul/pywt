@@ -766,7 +766,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                 if M < 1:
                     raise ValueError(
                         "Complex Poisson order must be a float >= 1.")     
-                self.w.cpoi_number = M
+                self.w.cpoi_number = float(M)
             else:
                 raise ValueError(
                     "Invalid continuous wavelet name '%s'." % self.name)
@@ -859,9 +859,9 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
     property cpoi_number:
         "number parameter for cpoi"
         def __get__(self):
-            if self.w.cpoi_number < 0:
+            if self.w.cpoi_number >= 1:
                 return self.w.cpoi_number
-        def __set__(self, unsigned int value):
+        def __set__(self, float value):
             self.w.cpoi_number = value
                                                      
     property symmetry:
