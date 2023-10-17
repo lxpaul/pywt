@@ -180,7 +180,7 @@ cdef extern from "c/cwt.h":
                                   const size_t number) nogil
 
     cdef void double_cpoi(const double * const input, double * const output_r, double * const output_i, const size_t N,
-                                  float number) nogil
+                                  double number) nogil
     
     cdef void double_shan(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   double FB, double FC) nogil
