@@ -187,6 +187,6 @@ __wfamily_list_short = [
 __wfamily_list_long = [
     "Haar", "Daubechies", "Symlets", "Coiflets", "Biorthogonal",
     "Reverse biorthogonal", "Discrete Meyer (FIR Approximation)", "Gaussian",
-    "Mexican hat wavelet", "Poisson kernel wavelet", "Morlet wavelet", "Complex Gaussian wavelets",
+    "Mexican hat wavelet", "Morlet wavelet", "Poisson kernel wavelet", "Complex Gaussian wavelets",
     "Complex Poisson wavelets", "Shannon wavelets", "Frequency B-Spline wavelets",
     "Complex Morlet wavelets"]
