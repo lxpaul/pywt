@@ -763,7 +763,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                 self.w.fbsp_order = int(M)
             elif base_name in ['cpoi']:
                 M = float(freqs[0])
-                if M < 1:
+                if M < 1.0:
                     raise ValueError(
                         "Complex Poisson order must be a float >= 1.")     
                 self.w.cpoi_number = float(M)
