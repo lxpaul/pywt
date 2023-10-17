@@ -38,6 +38,8 @@ int is_discrete_wavelet(WAVELET_NAME name)
             return 0;
         case CGAU:
             return 0;
+        case CPOI:
+            return 0;
         case SHAN:
             return 0;
         case FBSP:
@@ -381,6 +383,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
         case MEXH:
             w = blank_continuous_wavelet();
@@ -399,6 +403,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
         case MORL:
             w = blank_continuous_wavelet();
@@ -417,6 +423,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
         case POIS:
             w = blank_continuous_wavelet();
@@ -435,6 +443,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
 
         case CGAU:
@@ -459,6 +469,27 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
+            break;
+        case CPOI:
+            w = blank_continuous_wavelet();
+            if(w == NULL) return NULL;
+
+            w->base.support_width = -1;
+            w->base.orthogonal = 0;
+            w->base.biorthogonal = 0;
+            w->base.symmetry = SYMMETRIC;
+            w->base.compact_support = 0;
+            w->base.family_name = "Complex Poisson wavelets";
+            w->base.short_name = "cgau";
+            w->complex_cwt = 1;
+            w->lower_bound = -5;
+            w->upper_bound = 5;
+            w->center_frequency = 0;
+            w->bandwidth_frequency = 0;
+            w->fbsp_order = 0;
+            w->cpoi_number = 1.0;
             break;
         case SHAN:
 
@@ -478,6 +509,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 1;
             w->bandwidth_frequency = 0.5;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
         case FBSP:
 
@@ -497,6 +530,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0.5;
             w->bandwidth_frequency = 1;
             w->fbsp_order = 2;
+            w->cpoi_number = 0.0;
+            
             break;
         case CMOR:
 
@@ -516,6 +551,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0.5;
             w->bandwidth_frequency = 1;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
+            
             break;
         default:
             return NULL;
@@ -596,6 +633,8 @@ ContinuousWavelet* blank_continuous_wavelet(void)
     w->center_frequency = -1;
     w->bandwidth_frequency = -1;
     w->fbsp_order = 0;
+    w->cpoi_number = 0.0;
+    
     return w;
 }
 

@@ -172,7 +172,7 @@ include "wavelets_list.pxi"  # __wname_to_code
 cdef object wname_to_code(name):
     cdef object code_number
     try:
-        if len(name) > 4 and name[:4] in ['cmor', 'shan', 'fbsp']:
+        if len(name) > 4 and name[:4] in ['cmor', 'shan', 'fbsp', 'cpoi']:
             name = name[:4]
         code_number = __wname_to_code[name]
         return code_number
@@ -698,7 +698,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
             raise ValueError(
                 "Only np.float32 and np.float64 dtype are supported for "
                 "ContinuousWavelet objects.")
-        if len(self.name) >= 4 and self.name[:4] in ['cmor', 'shan', 'fbsp']:
+        if len(self.name) >= 4 and self.name[:4] in ['cmor', 'shan', 'fbsp', 'cpoi']:
             base_name = self.name[:4]
             if base_name == self.name:
                 if base_name == 'fbsp':
@@ -709,6 +709,11 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         "order and B, C are floats representing the bandwidth "
                         "frequency and center frequency, respectively "
                         "(example: {0}1-1.5-1.0).").format(base_name)
+                elif base_name == 'cpoi':
+                    msg = (
+                        "Wavelets of family {0} need a float M"
+                        "(example: {0}2.").format(base_name)
+                                            
                 else:
                     msg = (
                         "Wavelets from the family {0}, without parameters "
@@ -741,7 +746,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         ).format(base_name))
                 self.w.bandwidth_frequency = float(freqs[0])
                 self.w.center_frequency = float(freqs[1])
-            elif base_name in ['fbsp', ]:
+            elif base_name in ['fbsp']:
                 if len(freqs) != 3:
                     raise ValueError(
                         ("For wavelets of family {0}, the name should take "
@@ -756,6 +761,17 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                     raise ValueError(
                         "Wavelet spline order must be an integer >= 1.")
                 self.w.fbsp_order = int(M)
+            elif base_name in ['cpoi']:
+                if len(freqs) != 1:
+                    raise ValueError(
+                        ("For wavelets of family{0}, the name should take "
+                         "the form {0}M where M is the order of the cpoi wavelet"
+                         "(example: {0}4.3).").format(base_name))
+                M = float(freqs[0])
+                if M < 1.0:
+                    raise ValueError(
+                        "Complex Poisson order must be a float >= 1.")     
+                self.w.cpoi_number = M
             else:
                 raise ValueError(
                     "Invalid continuous wavelet name '%s'." % self.name)
@@ -844,7 +860,15 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                 return self.w.fbsp_order
         def __set__(self, unsigned int value):
             self.w.fbsp_order = value
-
+                                                     
+    property cpoi_number:
+        "number parameter for cpoi"
+        def __get__(self):
+            if self.w.cpoi_number >= 1.0:
+                return self.w.cpoi_number
+        def __set__(self, float value):
+            self.w.cpoi_number = value
+                                                     
     property symmetry:
         "Wavelet symmetry"
         def __get__(self):

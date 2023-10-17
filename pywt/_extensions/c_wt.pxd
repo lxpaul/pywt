@@ -179,10 +179,15 @@ cdef extern from "c/cwt.h":
     cdef void double_cgau(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   const size_t number) nogil
 
+    cdef void double_cpoi(const double * const input, double * const output_r, double * const output_i, const size_t N,
+                                  double number) nogil
+    
     cdef void double_shan(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   double FB, double FC) nogil
+    
     cdef void double_fbsp(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   int M, double FB, double FC) nogil
+    
     cdef void double_cmor(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   double FB, double FC) nogil
 
@@ -199,7 +204,10 @@ cdef extern from "c/cwt.h":
 
     cdef void float_cgau(const float * const input, float * const output_r, float * const output_i, const size_t N,
                                   const size_t number) nogil
-
+    
+    cdef void float_cpoi(const float * const input, float * const output_r, float * const output_i, const size_t N,
+                                  float number) nogil
+    
     cdef void float_shan(const float * const input, float * const output_r, float * const output_i, const size_t N,
                         float FB, float FC) nogil
 

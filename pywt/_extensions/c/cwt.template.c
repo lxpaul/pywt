@@ -59,6 +59,14 @@ TYPE CAT(TYPE, _sin)(const TYPE x)
         return sinf(x);
 }
 
+TYPE CAT(TYPE, _atan)(const TYPE x)
+{
+    if (sizeof(TYPE) == sizeof(double))
+        return atan(x);
+    else
+        return atanf(x);
+}
+
 TYPE CAT(TYPE, _pi)(void)
 {
     if (sizeof(TYPE) == sizeof(double))
@@ -181,6 +189,17 @@ void CAT(TYPE, _cgau)(const TYPE * const restrict input,
     }
 }
 
+void CAT(TYPE, _cpoi)(const TYPE * const restrict input,
+                              TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
+                              const TYPE number){
+    size_t i = 0;
+    for (i = 0; i < N; i++)
+    {
+        output_r[i] = CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2.0),-(number+1.0)/2.0)*CAT(TYPE, _cos)((number+1.0)*CAT(TYPE, _atan)(input[i]))/(2*CAT(TYPE, _pi)());
+        output_i[i] = CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2.0),-(number+1.0)/2.0)*CAT(TYPE, _sin)((number+1.0)*CAT(TYPE, _atan)(input[i]))/(2*CAT(TYPE, _pi)());
+            
+       }
+}
 
 void CAT(TYPE, _shan)(const TYPE * const restrict input, TYPE * const restrict output_r, TYPE * const restrict output_i, const size_t N,
 const TYPE  FB, const TYPE  FC)

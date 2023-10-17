@@ -64,6 +64,7 @@ cdef extern from "c/wavelets.h":
         float center_frequency
         float bandwidth_frequency
         unsigned int fbsp_order
+        float cpoi_number
         int complex_cwt
 
 

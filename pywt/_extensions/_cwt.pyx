@@ -17,6 +17,7 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
     cdef double bandwidth_frequency
     cdef double center_frequency
     cdef int fbsp_order
+    cdef double cpoi_number
     if output_len < 1:
         raise RuntimeError("Invalid output length.")
 
@@ -51,6 +52,13 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
             family_number = wavelet.family_number
             with nogil:
                 c_wt.double_cgau(&data[0], <double *>psi_r.data, <double *>psi_i.data, data_size, family_number)
+            return (psi_r, psi_i)
+        elif wavelet.short_family_name == "cpoi":
+            psi_r = np.zeros(output_len, np.float64)
+            psi_i = np.zeros(output_len, np.float64)
+            cpoi_number = wavelet.cpoi_number
+            with nogil:
+                c_wt.double_cpoi(&data[0], <double *>psi_r.data, <double *>psi_i.data, data_size, cpoi_number)
             return (psi_r, psi_i)
         elif wavelet.short_family_name == "shan":
             psi_r = np.zeros(output_len, np.float64)
@@ -106,6 +114,13 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
             family_number = wavelet.family_number
             with nogil:
                 c_wt.float_cgau(&data[0], <float *>psi_r.data, <float *>psi_i.data, data_size, family_number)
+            return (psi_r, psi_i)
+        elif wavelet.short_family_name == "cpoi":
+            psi_r = np.zeros(output_len, np.float32)
+            psi_i = np.zeros(output_len, np.float32)
+            cpoi_number = wavelet.cpoi_number
+            with nogil:
+                c_wt.float_cpoi(&data[0], <float *>psi_r.data, <float *>psi_i.data, data_size, cpoi_number)
             return (psi_r, psi_i)
         elif wavelet.short_family_name == "shan":
             psi_r = np.zeros(output_len, np.float32)

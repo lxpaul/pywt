@@ -31,6 +31,7 @@ typedef enum {
     MORL,
     POIS,
     CGAU,
+    CPOI,
     SHAN,
     FBSP,
     CMOR
@@ -84,6 +85,7 @@ typedef struct {
     float center_frequency;
     float bandwidth_frequency;
     unsigned int fbsp_order;
+    float cpoi_number;
 
 } ContinuousWavelet;
 
