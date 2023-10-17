@@ -383,6 +383,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         case MEXH:
@@ -402,6 +403,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         case MORL:
@@ -421,6 +423,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         case POIS:
@@ -440,6 +443,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
 
@@ -465,6 +469,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         case CPOI:
@@ -484,7 +489,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
-            w->cpoi_number = 1;
+            w->cpoi_number = 1.0;
             break;
         case SHAN:
 
@@ -504,6 +509,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 1;
             w->bandwidth_frequency = 0.5;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         case FBSP:
@@ -524,6 +530,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0.5;
             w->bandwidth_frequency = 1;
             w->fbsp_order = 2;
+            w->cpoi_number = 0.0;
             
             break;
         case CMOR:
@@ -544,6 +551,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->center_frequency = 0.5;
             w->bandwidth_frequency = 1;
             w->fbsp_order = 0;
+            w->cpoi_number = 0.0;
             
             break;
         default:
@@ -625,6 +633,7 @@ ContinuousWavelet* blank_continuous_wavelet(void)
     w->center_frequency = -1;
     w->bandwidth_frequency = -1;
     w->fbsp_order = 0;
+    w->cpoi_number = 0.0;
     
     return w;
 }
