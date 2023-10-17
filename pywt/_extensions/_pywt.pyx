@@ -711,7 +711,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         "(example: {0}1-1.5-1.0).").format(base_name)
                 elif base_name == 'cpoi':
                     msg = (
-                        "Wavelets of family {0} need an order M"
+                        "Wavelets of family {0} need a float M"
                         "(example: {0}2.").format(base_name)
                                             
                 else:
@@ -767,10 +767,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         ("For wavelets of family{0}, the name should take "
                          "the form {0}M where M is the order of the cpoi wavelet"
                          "(example: {0}4.3).").format(base_name))
-                if self.dt == np.float32:
-                    M = np.float32(freqs[0])
-                else :
-                    M = np.float64(freqs[0])
+                M = float(freqs[0])
                 if M < 1.0:
                     raise ValueError(
                         "Complex Poisson order must be a float >= 1.")     
