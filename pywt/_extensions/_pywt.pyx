@@ -771,7 +771,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                 if M < 1.0:
                     raise ValueError(
                         "Complex Poisson order must be a float >= 1.")     
-                self.w.cpoi_number = M
+                self.w.fbsp_order = M
             else:
                 raise ValueError(
                     "Invalid continuous wavelet name '%s'." % self.name)
