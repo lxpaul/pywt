@@ -767,7 +767,10 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         ("For wavelets of family{0}, the name should take "
                          "the form {0}M where M is the order of the cpoi wavelet"
                          "(example: {0}4.3).").format(base_name))
-                M = float(freqs)
+                if self.dt == np.float32:
+                    M = np.float32(freqs[0])
+                else :
+                    M = np.float64(freqs[0])
                 if M < 1.0:
                     raise ValueError(
                         "Complex Poisson order must be a float >= 1.")     
