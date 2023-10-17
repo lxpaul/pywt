@@ -482,7 +482,7 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->base.symmetry = SYMMETRIC;
             w->base.compact_support = 0;
             w->base.family_name = "Complex Poisson wavelets";
-            w->base.short_name = "cgau";
+            w->base.short_name = "cpoi";
             w->complex_cwt = 1;
             w->lower_bound = -5;
             w->upper_bound = 5;
