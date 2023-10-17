@@ -356,7 +356,7 @@ DiscreteWavelet* discrete_wavelet(WAVELET_NAME name, unsigned int order)
     return w;
 }
 
-ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order, unsigned float cpoi_number)
+ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order, unsigned int cpoi_number)
 {
     ContinuousWavelet *w;
     switch(name){
