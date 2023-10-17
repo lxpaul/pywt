@@ -180,7 +180,7 @@ cdef extern from "c/cwt.h":
                                   const size_t number) nogil
 
     cdef void double_cpoi(const double * const input, double * const output_r, double * const output_i, const size_t N,
-                                  double number) nogil
+                                  double N_P) nogil
     
     cdef void double_shan(const double * const input, double * const output_r, double * const output_i, const size_t N,
                                   double FB, double FC) nogil
@@ -206,7 +206,7 @@ cdef extern from "c/cwt.h":
                                   const size_t number) nogil
     
     cdef void float_cpoi(const float * const input, float * const output_r, float * const output_i, const size_t N,
-                                  float number) nogil
+                                  float N_P) nogil
     
     cdef void float_shan(const float * const input, float * const output_r, float * const output_i, const size_t N,
                         float FB, float FC) nogil
