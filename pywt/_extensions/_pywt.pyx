@@ -736,7 +736,18 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
         # set wavelet attributes based on frequencies extracted from the name
         if base_name != self.name:
             freqs = re.findall(cwt_pattern, self.name)
-            if base_name in ['shan', 'cmor']:
+            if base_name in ['cpoi']:
+                if len(freqs) != 1:
+                    raise ValueError(
+                        ("For wavelets of family{0}, the name should take "
+                         "the form {0}M where M is the order of the cpoi wavelet"
+                         "(example: {0}4.3).").format(base_name))
+                M = float(freqs[0])
+                if M < 1.0:
+                    raise ValueError(
+                        "Complex Poisson order must be a float >= 1.")     
+                self.w.cpoi_number = M
+            elif base_name in ['shan', 'cmor']:
                 if len(freqs) != 2:
                     raise ValueError(
                         ("For wavelets of family {0}, the name should take "
@@ -761,17 +772,6 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                     raise ValueError(
                         "Wavelet spline order must be an integer >= 1.")
                 self.w.fbsp_order = int(M)
-            elif base_name in ['cpoi']:
-                if len(freqs) != 1:
-                    raise ValueError(
-                        ("For wavelets of family{0}, the name should take "
-                         "the form {0}M where M is the order of the cpoi wavelet"
-                         "(example: {0}4.3).").format(base_name))
-                M = float(freqs[0])
-                if M < 1.0:
-                    raise ValueError(
-                        "Complex Poisson order must be a float >= 1.")     
-                self.w.cpoi_number = M
             else:
                 raise ValueError(
                     "Invalid continuous wavelet name '%s'." % self.name)
