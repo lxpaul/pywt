@@ -762,7 +762,11 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
                         "Wavelet spline order must be an integer >= 1.")
                 self.w.fbsp_order = int(M)
             elif base_name in ['cpoi']:
-                self.w.cpoi_number = float(freqs[0])
+                M = float(freqs[0])
+                if M < 1:
+                    raise ValueError(
+                        "Complex Poisson order must be a float >= 1.")     
+                self.w.cpoi_number = M
             else:
                 raise ValueError(
                     "Invalid continuous wavelet name '%s'." % self.name)
