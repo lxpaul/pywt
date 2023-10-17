@@ -859,7 +859,7 @@ cdef public class ContinuousWavelet [type ContinuousWaveletType, object Continuo
     property cpoi_number:
         "number parameter for cpoi"
         def __get__(self):
-            if self.w.cpoi_number >= 1:
+            if self.w.cpoi_number >= 1.0:
                 return self.w.cpoi_number
         def __set__(self, float value):
             self.w.cpoi_number = value
