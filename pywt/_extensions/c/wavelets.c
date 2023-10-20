@@ -441,8 +441,8 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->base.family_name = "Poisson kernel wavelet";
             w->base.short_name = "pois";
             w->complex_cwt = 0;
-            w->lower_bound = -16;
-            w->upper_bound = 16;
+            w->lower_bound = -8;
+            w->upper_bound = 8;
             w->center_frequency = 0;
             w->bandwidth_frequency = 0;
             w->fbsp_order = 0;
