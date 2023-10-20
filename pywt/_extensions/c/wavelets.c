@@ -433,7 +433,10 @@ ContinuousWavelet* continuous_wavelet(WAVELET_NAME name, unsigned int order)
             w->base.support_width = -1;
             w->base.orthogonal = 0;
             w->base.biorthogonal = 0;
-            w->base.symmetry = SYMMETRIC;
+            if (order % 2 == 0)
+                w->base.symmetry = ANTI_SYMMETRIC;
+            else
+                w->base.symmetry = SYMMETRIC;
             w->base.compact_support = 0;
             w->base.family_name = "Poisson kernel wavelet";
             w->base.short_name = "pois";
