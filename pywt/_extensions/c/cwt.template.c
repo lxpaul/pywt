@@ -151,7 +151,7 @@ void CAT(TYPE, _pois)(const TYPE * const restrict input,
                     output[i] = 24*input[i]*(CAT(TYPE, _pow)(input[i],4)-10*CAT(TYPE, _pow)(input[i],2)+5)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),5)*0.0636;
                     break;
                 case 5:
-                    output[i] =  -120*(CAT(TYPE, _pow)(input[i],6)-15*CAT(TYPE, _pow)(input[i],4)+15*CAT(TYPE, _pow)(input[i],2)+1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),6)*0.0134;
+                    output[i] =  -120*(CAT(TYPE, _pow)(input[i],6)-15*CAT(TYPE, _pow)(input[i],4)+15*CAT(TYPE, _pow)(input[i],2)-1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),6)*0.0134;
                     break;
                 case 6:
                     output[i] = 720*input[i]*(CAT(TYPE, _pow)(input[i],6)-21*CAT(TYPE, _pow)(input[i],4)+35*CAT(TYPE, _pow)(input[i],2)-7)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),7)*0.0023;
