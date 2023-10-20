@@ -131,12 +131,38 @@ void CAT(TYPE, _morl)(const TYPE * const restrict input, TYPE * const restrict o
     }
 }
 
-void CAT(TYPE, _pois)(const TYPE * const restrict input, TYPE * const restrict output, const size_t N)
-{
+void CAT(TYPE, _pois)(const TYPE * const restrict input,
+                              TYPE * const restrict output, const size_t N,
+                              const size_t number){
     size_t i = 0;
     for (i = 0; i < N; i++)
     {
-        output[i] = (1-CAT(TYPE, _pow)(input[i],2.0))/(CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2.0),2.0)*CAT(TYPE, _pi)());
+           switch (number) {
+               case 1:
+                    output[i] = -1*(CAT(TYPE, _pow)(input[i],2)-1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),2)*1.1284;
+                    break;
+                case 2:
+                    output[i] = 2*input[i]*(CAT(TYPE, _pow)(input[i],2)-3)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),3)*0.6515;
+                    break;
+                case 3:
+                    output[i] = -6*(CAT(TYPE, _pow)(input[i],4)-6*CAT(TYPE, _pow)(input[i],2)+1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),4)*0.2379;
+                    break;
+                case 4:
+                    output[i] = 24*input[i]*(CAT(TYPE, _pow)(input[i],4)-10*CAT(TYPE, _pow)(input[i],2)+5)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),5)*0.0636;
+                    break;
+                case 5:
+                    output[i] =  -120*(CAT(TYPE, _pow)(input[i],6)-15*CAT(TYPE, _pow)(input[i],4)+15*CAT(TYPE, _pow)(input[i],2)+1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),6)*0.0134;
+                    break;
+                case 6:
+                    output[i] = 720*input[i]*(CAT(TYPE, _pow)(input[i],6)-21*CAT(TYPE, _pow)(input[i],4)+35*CAT(TYPE, _pow)(input[i],2)-7)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),7)*0.0023;
+                    break;
+                case 7:
+                    output[i] =  -5040*(CAT(TYPE, _pow)(input[i],8)-28*CAT(TYPE, _pow)(input[i],6)+70*CAT(TYPE, _pow)(input[i],4)-28*CAT(TYPE, _pow)(input[i],2)+1)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),8)*0.000346;
+                    break;
+                case 8:
+                    output[i] =  40320*input[i]*(CAT(TYPE, _pow)(input[i],8)-36*CAT(TYPE, _pow)(input[i],6)+126*CAT(TYPE, _pow)(input[i],4)-84*CAT(TYPE, _pow)(input[i],2)+9)/CAT(TYPE, _pow)(1+CAT(TYPE, _pow)(input[i],2),9)*0.000044652;
+                    break;
+          }
     }
 }
 

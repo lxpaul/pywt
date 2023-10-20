@@ -43,8 +43,9 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
             return psi
         elif wavelet.short_family_name == "pois":
             psi = np.zeros(output_len, np.float64)
+            family_number = wavelet.family_number
             with nogil:
-                c_wt.double_pois(&data[0], <double *>psi.data, data_size)
+                c_wt.double_pois(&data[0], <double *>psi.data, data_size, family_number)
             return psi
         elif wavelet.short_family_name == "cgau":
             psi_r = np.zeros(output_len, np.float64)
@@ -105,8 +106,9 @@ cpdef cwt_psi_single(data_t[::1] data, ContinuousWavelet wavelet, size_t output_
             return psi
         elif wavelet.short_family_name == "pois":
             psi = np.zeros(output_len, np.float32)
+            family_number = wavelet.family_number
             with nogil:
-                c_wt.float_pois(&data[0], <float *>psi.data, data_size)
+                c_wt.float_pois(&data[0], <float *>psi.data, data_size, family_number)
             return psi
         elif wavelet.short_family_name == "cgau":
             psi_r = np.zeros(output_len, np.float32)

@@ -19,7 +19,9 @@ cdef extern from "c/wavelets.h":
         GAUS
         MEXH
         MORL
+        POIS
         CGAU
+        CPOI
         SHAN
         FBSP
         CMOR

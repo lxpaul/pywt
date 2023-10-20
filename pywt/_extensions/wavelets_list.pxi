@@ -158,7 +158,14 @@ __wname_to_code = {
 
     "morl": (MORL, 0),
 
-    "pois": (POIS, 0),
+    "pois1": (POIS, 1),
+    "pois2": (POIS, 2),
+    "pois3": (POIS, 3),
+    "pois4": (POIS, 4),
+    "pois5": (POIS, 5),
+    "pois6": (POIS, 6),
+    "pois7": (POIS, 7),
+    "pois8": (POIS, 8),
 
     "cgau1": (CGAU, 1),
     "cgau2": (CGAU, 2),
